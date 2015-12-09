@@ -5,11 +5,14 @@
     "Victor Loux <v.loux@qmul.ac.uk>"
   ],
   "dependencies": {
-      "https://github.com/gleitz/midi-js-soundfonts.git": "~0.2.1"
+    "underscore": "*",
+    "jquery": "~2.1.4",
+    "midi-js-soundfonts": "./midi-js-soundfonts/",
+    "icomoon": "~0.1.0"
   },
   "description": "Final IDMT project",
   "main": "index.html",
-  "license": "MIT",
+  "license": "WTFPL",
   "private": true,
   "ignore": [
     "**/.*",

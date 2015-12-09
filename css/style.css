@@ -1,8 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Chivo);
+@import url(../bower_components/icomoon/style.css);
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Chivo", sans-serif;
   font-size: 14px; }
 
 header {
@@ -17,7 +18,7 @@ header {
     float: left;
     width: 1em;
     border-right: 1px solid #f6f6f6;
-    padding: 0.2em 0.3em;
+    padding: 0.4em 0.4em 0.1em;
     color: white;
     font-size: 3em;
     text-decoration: none;
@@ -41,18 +42,33 @@ header {
     position: absolute;
     left: 0;
     width: 20%;
-    height: 100px;
-    padding: 60px 20px 0 1em;
+    height: 130px;
+    padding: 30px 20px 0 0;
     background: linear-gradient(to bottom, #888888 0%, #7c7d7d 47%, #555555 100%);
     float: left;
-    color: white; }
+    color: white;
+    z-index: 999; }
   .track label {
-    display: block; }
+    display: block;
+    margin-bottom: 0.3em; }
+    .track label span {
+      float: left;
+      text-align: right;
+      padding-right: 5%;
+      width: 35%; }
+    .track label select, .track label input {
+      width: 57%; }
   .track .data-holder {
     margin-left: 20%;
     padding: 60px 20px 0 3%;
     height: 100px;
-    width: 80%; }
+    position: absolute; }
+  .track .data {
+    table-layout: fixed; }
+    .track .data td {
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+      min-width: 60px;
+      max-width: 60px; }
   .track .currentBeat {
     background-color: #c3d6be;
     font-weight: bold; }

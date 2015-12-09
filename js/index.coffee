@@ -27,20 +27,6 @@ stopLoadingIndicator = ->
     isLoading = false
     $(".loaded-indicator").addClass("loaded").text "All loaded."
 
-makeRange = (start, stop, step = 1) ->
-    if (stop == null)
-      stop = start || 0
-      start = 0
-
-    length = Math.max(Math.ceil((stop - start) / step), 0)
-    range = Array(length)
-
-    `for (var idx = 0; idx < length; idx++, start += step) {
-      range[idx] = start;
-    }`
-
-    return range
-
 loadInstrument = (instrumentName) ->
     MIDI.loadResource
         instrument: instrumentName
@@ -52,28 +38,82 @@ loadInstrument = (instrumentName) ->
 
 loadDataset = (datasetName, track) ->
     $.getJSON "data/#{ datasetName }.json", (data) ->
-        track.find('.data').empty()
+        # Empty the current table
+        track.find(".data").empty()
 
-        lines = [[], []]
-        $.each data, (key, val) ->
-            lines[0].push "<td>#{ key }</td>"
-            lines[1].push "<td>#{ val }</td>"
+        # Take the first item and figure out the keys available
+        # in this dataset. (normally all items will be the
+        # same length/have the same properties).
+        fields = _.keys(data[0])
 
-        track.find('.data').append($('<tr>').append(lines[0]))
-        track.find('.data').append($('<tr>').append(lines[1]))
+        # For every field we have
+        for fieldName in fields
+            # For all items in data, this gets
+            # the value of array items that have this field name
+            values = _.pluck(data, fieldName)
 
+            # create a <tr> (table row)
+            tr = $("<tr>")
+
+            # Add a header to that row
+            # (th = table header, will be ignored when reading)
+            tr.append "<th>#{fieldName}</th>"
+
+            # For each value, wrap it in <td> tags (a cell)
+            # and append the whole thing to our tr
+            tr.append(_.map values, (item) ->
+                return "<td>#{item}</td>")
+
+            # add some data to this, while we have the values
+            # eg the min/max possible value, this will be useful later
+            # for mapping a value to a note
+
+            # but first convert all to numeric
+            values = _.map values, (item) ->
+                return Number.parseInt item, 10
+
+            tr.attr("data-max", _.max(values))
+            tr.attr("data-min", _.min(values))
+
+            # then add all this to the .data table
+            track.find(".data").append(tr)
+
+        #@todo: trigger setSkipValue again
+
+setSkipValue = (skipValue, track) ->
+    track.find(".data td.skip").remove() # reset skipped beats
+    newCells = Array(skipValue + 1).join("""<td class="skip"></td>""")
+    track.find(".data td").after(newCells)
 
 addTrack = ->
     track = $("""
         <article class="track">
             <div class="controls">
-                <label>Instrument <select class="instruments"></select></label>
-                <label>Dataset <select class="datasets"></select></label>
-                <label>Transformation <select class="transformation">
-                    <option value="direct_to_midi">Direct to MIDI</option>
-                </select></label>
-                <label>Velocity
-                    <input type="range" min="0" max="127" value="127" class="velocity" />
+                <label>
+                    <span>Instrument</span>
+                    <select name="instruments"></select>
+                </label>
+
+                <label>
+                    <span>Dataset</span>
+                    <select name="datasets"></select>
+                </label>
+
+                <label>
+                    <span>Conversion</span>
+                    <select name="transformation">
+                        <option value="direct_to_midi">Direct to MIDI</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>Velocity</span>
+                    <input type="range" min="0" max="127" value="127" name="velocity" />
+                </label>
+
+                <label>
+                    <span>Skip</span>
+                    <input type="range" min="0" max="6" value="0" name="skip" />
                 </label>
             </div>
             <div class="data-holder">
@@ -85,12 +125,12 @@ addTrack = ->
 
     # if we already loaded the list of instruments somewhere else, copy it
     # if not then it will be added to the initial tracks usually
-    if $('.instruments').length > 0
-        track.find('.instruments').append instrumentList
+    if $("select[name='instruments']").length > 0
+        track.find("select[name='instruments']").append instrumentList
 
-    if $('.datasets').length > 0
-        track.find('.datasets').append $('.datasets').first().html()
-        track.find('.datasets').trigger("change") # load first one
+    if $("select[name='datasets']").length > 0
+        track.find("select[name='datasets']").append $("select[name='datasets']").first().html()
+        track.find("select[name='datasets']").trigger("change") # load first one
 
     # we trigger a scroll event, to make sure the controls are re-positioned
     $(window).scroll()
@@ -102,21 +142,27 @@ addTrack = ->
 # inside our play loop
 stop = ->
     stopped = true
-    $('#playpause').text('\u25B6')
+    $("#playpause span").attr("class", "icon icon-play3")
 
     # Clear the timer for the next beat
     if nextTimeout isnt null
         clearTimeout nextTimeout
 
+
+###*
+ * Starts the playback. This is a recursive function
+ * that will call itself at every beat, and each time
+ * will figure the current beat and send it to playBeat.
+###
 play = ->
     stopped = false
-    $('#playpause').text('\u2759\u2759')
+
+    # Changes the button icon to pause (two || characters)
+    $("#playpause span").attr("class", "icon icon-pause2")
 
     # block playback if we're not done loading
     if isLoading
         return stop()
-
-    MIDI.setVolume 0, 127
 
     # Play the current beat
     playBeat(currentBeat)
@@ -134,9 +180,20 @@ play = ->
 
     # ..but if that reaches the end of the 'song', then rewind and stop
     if currentBeat >= totalBeats
-        currentBeat = 0
+        rewind()
         stop()
 
+rewind = ->
+    currentBeat = 0
+    $(window).scrollLeft(0)
+
+###*
+ * Plays all the notes of a given beat.
+ * It goes through every track, and for each one,
+ * finds the current data point, converts it to notes/chords,
+ * and play it in a new channel with the given parameters (instrument,
+ * velocity, etc.)
+###
 playBeat = (beat) ->
     channel = 0 # Start at channel 0
     cell = null
@@ -144,28 +201,47 @@ playBeat = (beat) ->
     # Remove the green check on previously played beat
     $(".currentBeat").removeClass("currentBeat")
 
-    $('.track').each ->
+    $(".track").each ->
         # Find the settings in the track
-        instrumentName = $(this).find('.instruments').val()
-        velocity = $(this).find('.velocity').val()
+        instrumentName = $(this).find("select[name='instruments']").val()
+        velocity = $(this).find("input[name='velocity']").val()
         velocity = Number.parseInt(velocity, 10)
 
-        beat = beat + channel #@todo: remove, for testing only
+        # beat = beat + channel # @todo: remove, for testing only
         dataLine = 1
 
         # find the cell we'll use
+        # within the table (.data) then find
+        # the nth <tr> (row) where n = dataLine (row of data we're using)
+        # and within that row, the nth column (<td>) which is the
+        # current beat
         cell = $(this).find(".data tr:eq(#{ dataLine }) td:eq(#{beat})")
 
-        cell.addClass('currentBeat')
+        # Add a class to this cell to show it's currently playing
+        cell.addClass("currentBeat")
 
+        # Parse the value of the cell into a number
         noteValue = cell.text()
         noteValue = Number.parseInt(noteValue, 10)
 
-        # Play the note
+        # @todo: modify that value into notes/chords
+
+        ### Play the note using MIDI.js ###
+
+        # Set the volume of that channel to the max
+        # (note: this cannot actually be changed per channel due to a bug
+        # in MIDI.js, see https://github.com/mudcube/MIDI.js/issues/46
+        # so we set the first to 127 regardless)
+        MIDI.setVolume channel, 127
+
+        # Set the desired instrument to that channel
         MIDI.programChange channel, MIDI.GM.byName[instrumentName].number
+
+        # Set the start/end of that note
         MIDI.noteOn channel, noteValue, velocity, 0
         MIDI.noteOff channel, noteValue, velocity, speed
 
+        # Increment the channel number for the next track
         channel++
 
     # When we're done with all the tracks
@@ -192,12 +268,12 @@ $ ->
     # both axes, whereas I only need the X axis)
     $(window).scroll ->
         # its sets the 'left' css property to the current X scroll value
-        $('.controls').css "left", $(this).scrollLeft()
+        $(".controls").css "left", $(this).scrollLeft()
 
     # Start by loading up MIDI.js
     # with a correct plugin (+ a default instrument)
     MIDI.loadPlugin
-        soundfontUrl: "bower_components/MIDI.js Soundfonts/FluidR3_GM/"
+        soundfontUrl: "bower_components/midi-js-soundfonts/FluidR3_GM/"
         instrument: "acoustic_grand_piano"
         onprogress: (state, progress) ->
             # console.log state, progress
@@ -218,8 +294,8 @@ $ ->
 
         # then add these <option> tags to every <select> that's already in place
         # (if we add tracks later it will be copied from existing tracks)
-        $('.instruments').append items
-        instrumentList = items.join('')
+        $("select[name='instruments']").append items
+        instrumentList = items.join("")
         stopLoadingIndicator()
 
 
@@ -237,30 +313,44 @@ $ ->
 
         # then add these <option> tags to every <select> that's already in place
         # (if we add tracks later it will be copied from existing tracks)
-        $('.datasets').append items
-        datasetList = items.join('')
+        $("select[name='datasets']").append items
+        datasetList = items.join("")
         stopLoadingIndicator()
-        $(".datasets").trigger("change") # load first one
+        $("select[name='datasets']").trigger("change") # load first one
 
 
     ###  Event handlers ###
 
     # Add a track when the + button is clicked
-    $('.add-track').on "click", addTrack
+    $(".add-track").on "click", addTrack
 
     # Stop or start the track when the play/pause button is clicked
-    $('#playpause').on "click", ->
+    $("#playpause").on "click", ->
         if stopped then play()
         else stop()
 
+    $("#rewind").on "click", rewind
+
     # Load an instrument when the dropdown changes
-    $(".tracks").on "change", ".instruments", ->
+    $(".tracks").on "change", "select[name='instruments']", ->
         loadInstrument $(this).val()
 
     # Load a dataset when the dropdown changes
-    $(".tracks").on "change", ".datasets", ->
-        loadDataset $(this).val(), $(this).parents('.track').first()
+    $(".tracks").on "change", "select[name='datasets']", ->
+        loadDataset $(this).val(), $(this).parents(".track").first()
+
+    # Change the number of beats to skip for a dataset
+    $(".tracks").on "change", "input[name='skip']", ->
+        setSkipValue(Number.parseInt($(this).val(), 10), $(this).parents(".track").first())
 
     # Modify the speed of the track (in the header)
     $("#speed").on "change", ->
         speed = Number.parseFloat $(this).val(), 10
+
+    # Plays/pauses when the space bar is pressed
+    $(window).keypress (e) ->
+         if (e.keyCode == 0 || e.keyCode == 32)
+            $("#playpause").click()
+
+    # @todo implement mute
+    #icomoons = volume-mute & volume-mute2

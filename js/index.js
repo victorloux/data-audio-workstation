@@ -5,7 +5,7 @@
  */
 
 /* UTILITY FUNCTION & VARIABLES */
-var addTrack, currentBeat, datasetList, instrumentList, isLoading, loadDataset, loadInstrument, makeRange, nextTimeout, play, playBeat, speed, startLoadingIndicator, stop, stopLoadingIndicator, stopped, totalBeats, velocity;
+var addTrack, currentBeat, datasetList, instrumentList, isLoading, loadDataset, loadInstrument, nextTimeout, play, playBeat, rewind, setSkipValue, speed, startLoadingIndicator, stop, stopLoadingIndicator, stopped, totalBeats, velocity;
 
 isLoading = true;
 
@@ -33,23 +33,6 @@ stopLoadingIndicator = function() {
   return $(".loaded-indicator").addClass("loaded").text("All loaded.");
 };
 
-makeRange = function(start, stop, step) {
-  var length, range;
-  if (step == null) {
-    step = 1;
-  }
-  if (stop === null) {
-    stop = start || 0;
-    start = 0;
-  }
-  length = Math.max(Math.ceil((stop - start) / step), 0);
-  range = Array(length);
-  for (var idx = 0; idx < length; idx++, start += step) {
-      range[idx] = start;
-    };
-  return range;
-};
-
 loadInstrument = function(instrumentName) {
   return MIDI.loadResource({
     instrument: instrumentName,
@@ -64,28 +47,46 @@ loadInstrument = function(instrumentName) {
 
 loadDataset = function(datasetName, track) {
   return $.getJSON("data/" + datasetName + ".json", function(data) {
-    var lines;
-    track.find('.data').empty();
-    lines = [[], []];
-    $.each(data, function(key, val) {
-      lines[0].push("<td>" + key + "</td>");
-      return lines[1].push("<td>" + val + "</td>");
-    });
-    track.find('.data').append($('<tr>').append(lines[0]));
-    return track.find('.data').append($('<tr>').append(lines[1]));
+    var fieldName, fields, tr, values, _i, _len, _results;
+    track.find(".data").empty();
+    fields = _.keys(data[0]);
+    _results = [];
+    for (_i = 0, _len = fields.length; _i < _len; _i++) {
+      fieldName = fields[_i];
+      values = _.pluck(data, fieldName);
+      tr = $("<tr>");
+      tr.append("<th>" + fieldName + "</th>");
+      tr.append(_.map(values, function(item) {
+        return "<td>" + item + "</td>";
+      }));
+      values = _.map(values, function(item) {
+        return Number.parseInt(item, 10);
+      });
+      tr.attr("data-max", _.max(values));
+      tr.attr("data-min", _.min(values));
+      _results.push(track.find(".data").append(tr));
+    }
+    return _results;
   });
+};
+
+setSkipValue = function(skipValue, track) {
+  var newCells;
+  track.find(".data td.skip").remove();
+  newCells = Array(skipValue + 1).join("<td class=\"skip\"></td>");
+  return track.find(".data td").after(newCells);
 };
 
 addTrack = function() {
   var track;
-  track = $("<article class=\"track\">\n    <div class=\"controls\">\n        <label>Instrument <select class=\"instruments\"></select></label>\n        <label>Dataset <select class=\"datasets\"></select></label>\n        <label>Transformation <select class=\"transformation\">\n            <option value=\"direct_to_midi\">Direct to MIDI</option>\n        </select></label>\n        <label>Velocity\n            <input type=\"range\" min=\"0\" max=\"127\" value=\"127\" class=\"velocity\" />\n        </label>\n    </div>\n    <div class=\"data-holder\">\n        <table class=\"data\"></table>\n    </div>\n</article>");
+  track = $("<article class=\"track\">\n    <div class=\"controls\">\n        <label>\n            <span>Instrument</span>\n            <select name=\"instruments\"></select>\n        </label>\n\n        <label>\n            <span>Dataset</span>\n            <select name=\"datasets\"></select>\n        </label>\n\n        <label>\n            <span>Conversion</span>\n            <select name=\"transformation\">\n                <option value=\"direct_to_midi\">Direct to MIDI</option>\n            </select>\n        </label>\n\n        <label>\n            <span>Velocity</span>\n            <input type=\"range\" min=\"0\" max=\"127\" value=\"127\" name=\"velocity\" />\n        </label>\n\n        <label>\n            <span>Skip</span>\n            <input type=\"range\" min=\"0\" max=\"6\" value=\"0\" name=\"skip\" />\n        </label>\n    </div>\n    <div class=\"data-holder\">\n        <table class=\"data\"></table>\n    </div>\n</article>");
   track.appendTo($(".tracks"));
-  if ($('.instruments').length > 0) {
-    track.find('.instruments').append(instrumentList);
+  if ($("select[name='instruments']").length > 0) {
+    track.find("select[name='instruments']").append(instrumentList);
   }
-  if ($('.datasets').length > 0) {
-    track.find('.datasets').append($('.datasets').first().html());
-    track.find('.datasets').trigger("change");
+  if ($("select[name='datasets']").length > 0) {
+    track.find("select[name='datasets']").append($("select[name='datasets']").first().html());
+    track.find("select[name='datasets']").trigger("change");
   }
   return $(window).scroll();
 };
@@ -95,44 +96,66 @@ addTrack = function() {
 
 stop = function() {
   stopped = true;
-  $('#playpause').text('\u25B6');
+  $("#playpause span").attr("class", "icon icon-play3");
   if (nextTimeout !== null) {
     return clearTimeout(nextTimeout);
   }
 };
 
+
+/**
+ * Starts the playback. This is a recursive function
+ * that will call itself at every beat, and each time
+ * will figure the current beat and send it to playBeat.
+ */
+
 play = function() {
   stopped = false;
-  $('#playpause').text('\u2759\u2759');
+  $("#playpause span").attr("class", "icon icon-pause2");
   if (isLoading) {
     return stop();
   }
-  MIDI.setVolume(0, 127);
   playBeat(currentBeat);
   nextTimeout = setTimeout(play, speed * 1000 * 2);
   currentBeat++;
   if (currentBeat >= totalBeats) {
-    currentBeat = 0;
+    rewind();
     return stop();
   }
 };
+
+rewind = function() {
+  currentBeat = 0;
+  return $(window).scrollLeft(0);
+};
+
+
+/**
+ * Plays all the notes of a given beat.
+ * It goes through every track, and for each one,
+ * finds the current data point, converts it to notes/chords,
+ * and play it in a new channel with the given parameters (instrument,
+ * velocity, etc.)
+ */
 
 playBeat = function(beat) {
   var cell, cellPosition, channel;
   channel = 0;
   cell = null;
   $(".currentBeat").removeClass("currentBeat");
-  $('.track').each(function() {
+  $(".track").each(function() {
     var dataLine, instrumentName, noteValue;
-    instrumentName = $(this).find('.instruments').val();
-    velocity = $(this).find('.velocity').val();
+    instrumentName = $(this).find("select[name='instruments']").val();
+    velocity = $(this).find("input[name='velocity']").val();
     velocity = Number.parseInt(velocity, 10);
-    beat = beat + channel;
     dataLine = 1;
     cell = $(this).find(".data tr:eq(" + dataLine + ") td:eq(" + beat + ")");
-    cell.addClass('currentBeat');
+    cell.addClass("currentBeat");
     noteValue = cell.text();
     noteValue = Number.parseInt(noteValue, 10);
+
+    /* Play the note using MIDI.js */
+    MIDI.setVolume(channel, 127);
     MIDI.programChange(channel, MIDI.GM.byName[instrumentName].number);
     MIDI.noteOn(channel, noteValue, velocity, 0);
     MIDI.noteOff(channel, noteValue, velocity, speed);
@@ -146,10 +169,10 @@ $(function() {
   startLoadingIndicator();
   addTrack();
   $(window).scroll(function() {
-    return $('.controls').css("left", $(this).scrollLeft());
+    return $(".controls").css("left", $(this).scrollLeft());
   });
   MIDI.loadPlugin({
-    soundfontUrl: "bower_components/MIDI.js Soundfonts/FluidR3_GM/",
+    soundfontUrl: "bower_components/midi-js-soundfonts/FluidR3_GM/",
     instrument: "acoustic_grand_piano",
     onprogress: function(state, progress) {},
     onsuccess: function() {
@@ -166,8 +189,8 @@ $(function() {
       });
       return items.push("</optgroup>");
     });
-    $('.instruments').append(items);
-    instrumentList = items.join('');
+    $("select[name='instruments']").append(items);
+    instrumentList = items.join("");
     return stopLoadingIndicator();
   });
   $.getJSON("datasets.json", function(data) {
@@ -180,28 +203,37 @@ $(function() {
       });
       return items.push("</optgroup>");
     });
-    $('.datasets').append(items);
-    datasetList = items.join('');
+    $("select[name='datasets']").append(items);
+    datasetList = items.join("");
     stopLoadingIndicator();
-    return $(".datasets").trigger("change");
+    return $("select[name='datasets']").trigger("change");
   });
 
   /*  Event handlers */
-  $('.add-track').on("click", addTrack);
-  $('#playpause').on("click", function() {
+  $(".add-track").on("click", addTrack);
+  $("#playpause").on("click", function() {
     if (stopped) {
       return play();
     } else {
       return stop();
     }
   });
-  $(".tracks").on("change", ".instruments", function() {
+  $("#rewind").on("click", rewind);
+  $(".tracks").on("change", "select[name='instruments']", function() {
     return loadInstrument($(this).val());
   });
-  $(".tracks").on("change", ".datasets", function() {
-    return loadDataset($(this).val(), $(this).parents('.track').first());
+  $(".tracks").on("change", "select[name='datasets']", function() {
+    return loadDataset($(this).val(), $(this).parents(".track").first());
   });
-  return $("#speed").on("change", function() {
+  $(".tracks").on("change", "input[name='skip']", function() {
+    return setSkipValue(Number.parseInt($(this).val(), 10), $(this).parents(".track").first());
+  });
+  $("#speed").on("change", function() {
     return speed = Number.parseFloat($(this).val(), 10);
+  });
+  return $(window).keypress(function(e) {
+    if (e.keyCode === 0 || e.keyCode === 32) {
+      return $("#playpause").click();
+    }
   });
 });

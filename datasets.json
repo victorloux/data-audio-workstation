@@ -1,5 +1,6 @@
 {
 	"Death": {
-		"pedestrian_deaths_us": "Pedestrian death rates in the US"
+		"pedestrian_deaths_us": "Pedestrian death rates in the US",
+		"deaths_by_hanging_us": "Suicides by hanging in the US"
 	}
 }
