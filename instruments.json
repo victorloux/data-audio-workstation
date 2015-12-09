@@ -1,0 +1,161 @@
+{
+	"Piano": {
+		"acoustic_grand_piano": "Acoustic Grand Piano",
+		"bright_acoustic_piano": "Bright Acoustic Piano",
+		"electric_grand_piano": "Electric Grand Piano",
+		"honkytonk_piano": "Honky-tonk Piano",
+		"electric_piano_1": "Electric Piano 1",
+		"electric_piano_2": "Electric Piano 2",
+		"harpsichord": "Harpsichord",
+		"clavinet": "Clavinet"
+	},
+	"Chromatic Percussion": {
+		"celesta": "Celesta",
+		"glockenspiel": "Glockenspiel",
+		"music_box": "Music Box",
+		"vibraphone": "Vibraphone",
+		"marimba": "Marimba",
+		"xylophone": "Xylophone",
+		"tubular_bells": "Tubular Bells",
+		"dulcimer": "Dulcimer"
+	},
+	"Organ": {
+		"drawbar_organ": "Drawbar Organ",
+		"percussive_organ": "Percussive Organ",
+		"rock_organ": "Rock Organ",
+		"church_organ": "Church Organ",
+		"reed_organ": "Reed Organ",
+		"accordion": "Accordion",
+		"harmonica": "Harmonica",
+		"tango_accordion": "Tango Accordion"
+	},
+	"Guitar": {
+		"acoustic_guitar_nylon": "Acoustic Guitar Nylon",
+		"acoustic_guitar_steel": "Acoustic Guitar Steel",
+		"electric_guitar_jazz": "Electric Guitar Jazz",
+		"electric_guitar_clean": "Electric Guitar Clean",
+		"electric_guitar_muted": "Electric Guitar Muted",
+		"overdriven_guitar": "Overdriven Guitar",
+		"distortion_guitar": "Distortion Guitar",
+		"guitar_harmonics": "Guitar Harmonics"
+	},
+	"Bass": {
+		"acoustic_bass": "Acoustic Bass",
+		"electric_bass_finger": "Electric Bass Finger",
+		"electric_bass_pick": "Electric Bass Pick",
+		"fretless_bass": "Fretless Bass",
+		"slap_bass_1": "Slap Bass 1",
+		"slap_bass_2": "Slap Bass 2",
+		"synth_bass_1": "Synth Bass 1",
+		"synth_bass_2": "Synth Bass 2"
+	},
+	"Strings": {
+		"violin": "Violin",
+		"viola": "Viola",
+		"cello": "Cello",
+		"contrabass": "Contrabass",
+		"tremolo_strings": "Tremolo Strings",
+		"pizzicato_strings": "Pizzicato Strings",
+		"orchestral_harp": "Orchestral Harp",
+		"timpani": "Timpani"
+	},
+	"Ensemble": {
+		"string_ensemble_1": "String Ensemble 1",
+		"string_ensemble_2": "String Ensemble 2",
+		"synth_strings_1": "Synth Strings 1",
+		"synth_strings_2": "Synth Strings 2",
+		"choir_aahs": "Choir Aahs",
+		"voice_oohs": "Voice Oohs",
+		"orchestra_hit": "Orchestra Hit"
+	},
+	"Brass": {
+		"trumpet": "Trumpet",
+		"trombone": "Trombone",
+		"tuba": "Tuba",
+		"muted_trumpet": "Muted Trumpet",
+		"french_horn": "French Horn",
+		"brass_section": "Brass Section",
+		"synth_brass_1": "Synth Brass 1",
+		"synth_brass_2": "Synth Brass 2"
+	},
+	"Reed": {
+		"soprano_sax": "Soprano Sax",
+		"alto_sax": "Alto Sax",
+		"tenor_sax": "Tenor Sax",
+		"baritone_sax": "Baritone Sax",
+		"oboe": "Oboe",
+		"english_horn": "English Horn",
+		"bassoon": "Bassoon",
+		"clarinet": "Clarinet"
+	},
+	"Pipe": {
+		"piccolo": "Piccolo",
+		"flute": "Flute",
+		"recorder": "Recorder",
+		"pan_flute": "Pan Flute",
+		"blown_bottle": "Blown Bottle",
+		"shakuhachi": "Shakuhachi",
+		"whistle": "Whistle",
+		"ocarina": "Ocarina"
+	},
+	"Synth Lead": {
+		"lead_1_square": "Lead 1 (square)",
+		"lead_2_sawtooth": "Lead 2 (sawtooth)",
+		"lead_3_calliope": "Lead 3 (calliope)",
+		"lead_4_chiff": "Lead 4 (chiff)",
+		"lead_5_charang": "Lead 5 (charang)",
+		"lead_6_voice": "Lead 6 (voice)",
+		"lead_7_fifths": "Lead 7 (fifths)",
+		"lead_8_bass__lead": "Lead 8 (bass + Lead)"
+	},
+	"Synth Pad": {
+		"pad_1_new_age": "Pad 1 (new Age)",
+		"pad_2_warm": "Pad 2 (warm)",
+		"pad_3_polysynth": "Pad 3 (polysynth)",
+		"pad_4_choir": "Pad 4 (choir)",
+		"pad_5_bowed": "Pad 5 (bowed)",
+		"pad_6_metallic": "Pad 6 (metallic)",
+		"pad_7_halo": "Pad 7 (halo)",
+		"pad_8_sweep": "Pad 8 (sweep)"
+	},
+	"Synth Effects": {
+		"fx_1_rain": "Fx 1 (rain)",
+		"fx_2_soundtrack": "Fx 2 (soundtrack)",
+		"fx_3_crystal": "Fx 3 (crystal)",
+		"fx_4_atmosphere": "Fx 4 (atmosphere)",
+		"fx_5_brightness": "Fx 5 (brightness)",
+		"fx_6_goblins": "Fx 6 (goblins)",
+		"fx_7_echoes": "Fx 7 (echoes)",
+		"fx_8_scifi": "Fx 8 (scifi)"
+	},
+	"Ethnic": {
+		"sitar": "Sitar",
+		"banjo": "Banjo",
+		"shamisen": "Shamisen",
+		"koto": "Koto",
+		"kalimba": "Kalimba",
+		"bagpipe": "Bagpipe",
+		"fiddle": "Fiddle",
+		"shanai": "Shanai"
+	},
+	"Percussive": {
+		"tinkle_bell": "Tinkle Bell",
+		"agogo": "Agogo",
+		"steel_drums": "Steel Drums",
+		"woodblock": "Woodblock",
+		"taiko_drum": "Taiko Drum",
+		"melodic_tom": "Melodic Tom",
+		"synth_drum": "Synth Drum",
+		"reverse_cymbal": "Reverse Cymbal"
+	},
+	"Sound effects": {
+		"guitar_fret_noise": "Guitar Fret Noise",
+		"breath_noise": "Breath Noise",
+		"seashore": "Seashore",
+		"bird_tweet": "Bird Tweet",
+		"telephone_ring": "Telephone Ring",
+		"helicopter": "Helicopter",
+		"applause": "Applause",
+		"gunshot": "Gunshot"
+	}
+}

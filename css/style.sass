@@ -1,0 +1,92 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700)
+
+body
+    margin: 0
+    padding: 0
+
+    font-family: 'Noto Sans', sans-serif
+    font-size: 14px
+
+
+$header-height: 5em
+
+header
+    height: $header-height
+    background-color: #222
+    color: #fff
+    position: fixed
+    width: 100%
+    top: 0
+
+    a:link, a:visited
+        display: block
+        float: left
+        width: 1em
+        border-right: 1px solid #f6f6f6
+        padding: 0.2em 0.3em
+
+        color: #fff
+        font-size: 3em
+        text-decoration: none
+        font-weight: bold
+
+    .loaded-indicator
+        padding: 1.8em 12em
+        float: left
+
+        &.loaded
+            color: #00cc00
+
+    .options
+        padding: 1.8em 20em
+
+.tracks
+    margin-top: $header-height
+
+$track-height: 100px
+
+.track
+    // width: 100%
+    height: $track-height + 60
+    background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 47%, #ededed 100%)
+    // position: absolute
+    clear: both
+
+    .controls
+        position: absolute
+        left: 0
+        width: 20%
+        height: $track-height
+        padding: 60px 20px 0 1em
+        background: linear-gradient(to bottom, #888888 0%, #7c7d7d 47%, #555555 100%)
+        float: left
+        color: #fff
+
+    label
+        display: block
+        // font-weight: bold
+
+    .data-holder
+        margin-left: 20%
+        padding: 60px 20px 0 3%
+        height: $track-height
+        width: 80%
+
+    .currentBeat
+        background-color: #C3D6BE
+        font-weight: bold
+
+// Different colour for every track
+$i: 1
+$track-colours: #16a085, #f39c12, #2980b9, #34495e, #27ae60, #8e44ad, #c0392b, #bdc3c7
+
+@each $track-colour in $track-colours
+    .track:nth-of-type(#{$i})
+        border-top: darken($track-colour, 20%)
+        $lighter-colour: mix($track-colour, white, 3%)
+        background: linear-gradient(to bottom, $lighter-colour 0%, darken($lighter-colour, 2%) 47%, darken($lighter-colour, 6%) 100%)
+
+        .controls
+            background: linear-gradient(to bottom, $track-colour 0%, darken($track-colour, 5%) 47%, darken($track-colour, 15%) 100%)
+
+    $i: $i + 1

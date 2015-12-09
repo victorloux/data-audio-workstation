@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px; }
+
+header {
+  height: 5em;
+  background-color: #222222;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0; }
+  header a:link, header a:visited {
+    display: block;
+    float: left;
+    width: 1em;
+    border-right: 1px solid #f6f6f6;
+    padding: 0.2em 0.3em;
+    color: white;
+    font-size: 3em;
+    text-decoration: none;
+    font-weight: bold; }
+  header .loaded-indicator {
+    padding: 1.8em 12em;
+    float: left; }
+    header .loaded-indicator.loaded {
+      color: #00cc00; }
+  header .options {
+    padding: 1.8em 20em; }
+
+.tracks {
+  margin-top: 5em; }
+
+.track {
+  height: 160px;
+  background: linear-gradient(to bottom, white 0%, #f6f6f6 47%, #ededed 100%);
+  clear: both; }
+  .track .controls {
+    position: absolute;
+    left: 0;
+    width: 20%;
+    height: 100px;
+    padding: 60px 20px 0 1em;
+    background: linear-gradient(to bottom, #888888 0%, #7c7d7d 47%, #555555 100%);
+    float: left;
+    color: white; }
+  .track label {
+    display: block; }
+  .track .data-holder {
+    margin-left: 20%;
+    padding: 60px 20px 0 3%;
+    height: 100px;
+    width: 80%; }
+  .track .currentBeat {
+    background-color: #c3d6be;
+    font-weight: bold; }
+
+.track:nth-of-type(1) {
+  border-top: #0a463a;
+  background: linear-gradient(to bottom, #f8fcfb 0%, #f1f9f7 47%, #e3f3ef 100%); }
+  .track:nth-of-type(1) .controls {
+    background: linear-gradient(to bottom, #16a085 0%, #138a72 47%, #0d5d4d 100%); }
+
+.track:nth-of-type(2) {
+  border-top: #976008;
+  background: linear-gradient(to bottom, #fefcf7 0%, #fdf9ee 47%, #fbf2dc 100%); }
+  .track:nth-of-type(2) .controls {
+    background: linear-gradient(to bottom, #f39c12 0%, #e08e0b 47%, #b06f09 100%); }
+
+.track:nth-of-type(3) {
+  border-top: #164666;
+  background: linear-gradient(to bottom, #f8fbfc 0%, #f1f7f9 47%, #e3eff3 100%); }
+  .track:nth-of-type(3) .controls {
+    background: linear-gradient(to bottom, #2980b9 0%, #2472a4 47%, #1b557a 100%); }
+
+.track:nth-of-type(4) {
+  border-top: #10161c;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #f2f4f6 47%, #e6eaed 100%); }
+  .track:nth-of-type(4) .controls {
+    background: linear-gradient(to bottom, #34495e 0%, #2b3c4e 47%, #19232d 100%); }
+
+.track:nth-of-type(5) {
+  border-top: #145b32;
+  background: linear-gradient(to bottom, #f8fcfa 0%, #f1f9f5 47%, #e3f3eb 100%); }
+  .track:nth-of-type(5) .controls {
+    background: linear-gradient(to bottom, #27ae60 0%, #229955 47%, #19703e 100%); }
+
+.track:nth-of-type(6) {
+  border-top: #522764;
+  background: linear-gradient(to bottom, #fbf9fc 0%, #f6f2f9 47%, #ede5f2 100%); }
+  .track:nth-of-type(6) .controls {
+    background: linear-gradient(to bottom, #8e44ad 0%, #7f3d9b 47%, #612e76 100%); }
+
+.track:nth-of-type(7) {
+  border-top: #6d2018;
+  background: linear-gradient(to bottom, #fdf9f8 0%, #fbf2f0 47%, #f6e5e0 100%); }
+  .track:nth-of-type(7) .controls {
+    background: linear-gradient(to bottom, #c0392b 0%, #ab3326 47%, #81261d 100%); }
+
+.track:nth-of-type(8) {
+  border-top: #869198;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #f8f8f8 47%, #eeeeee 100%); }
+  .track:nth-of-type(8) .controls {
+    background: linear-gradient(to bottom, #bdc3c7 0%, #afb6bb 47%, #949da4 100%); }

@@ -1,0 +1,21 @@
+{
+  "name": "sonification",
+  "version": "1.0.0",
+  "authors": [
+    "Victor Loux <v.loux@qmul.ac.uk>"
+  ],
+  "dependencies": {
+      "https://github.com/gleitz/midi-js-soundfonts.git": "~0.2.1"
+  },
+  "description": "Final IDMT project",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
