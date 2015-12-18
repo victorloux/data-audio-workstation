@@ -9,7 +9,7 @@ body
     font-size: 14px
 
 
-$header-height: 5em
+$header-height: 9em
 
 header
     height: $header-height
@@ -18,33 +18,75 @@ header
     position: fixed
     width: 100%
     top: 0
+    z-index: 9999
+    font-size: 1.2em
+    padding-left: 0.8em
 
-    a:link, a:visited
+    a:link, a:visited, .block
         display: block
         float: left
-        width: 1em
-        border-right: 1px solid #f6f6f6
-        padding: 0.4em 0.4em 0.1em
-
+        height: $header-height
+        font-size: 1em
         color: #fff
-        font-size: 3em
         text-decoration: none
         font-weight: bold
+        text-align: center
+
+        span, select
+            display: block
+            padding: 0.7em 0.5em 0.2em
+
+            &.icon
+                font-size: 3em
+
+        strong
+            font-size: 0.8em
+            text-transform: uppercase
+            height: $header-height
+
+    a:hover
+        background-color: #515151
+
+
+    .beats, loaded-indicator, #speed
+        font-size: 1.4em
+        font-weight: bold
+        padding-top: 2.0em !important
+        padding-bottom: 0.8em !important
+
+    #playpause span
+        font-size: 3.8em
+        padding-top: 0.4em
+        padding-bottom: 0.1em
 
     .loaded-indicator
-        padding: 1.8em 12em
-        float: left
-
         &.loaded
             color: #00cc00
 
-    .options
-        padding: 1.8em 20em
+    .centre
+        width: 7*3em
+        margin: 0 auto
+
+    .right
+        width: 230px
+        position: fixed
+        right: 0
+
+        .block
+            margin-right: 2em
+
+        span
+            padding-top: 3em
+            padding-bottom: 1em
+
+        select
+            margin-top: 2.2em
+            margin-bottom: 0.6em
 
 .tracks
-    margin-top: $header-height
+    margin-top: $header-height + 1.8em
 
-$track-height: 100px
+$track-height: 130px
 
 .track
     // width: 100%
@@ -53,16 +95,32 @@ $track-height: 100px
     // position: absolute
     clear: both
 
+    &:hover .delete
+        display: block
+
+    .delete
+        display: none
+        text-decoration: none
+        position: absolute
+        left: 13px
+        top: 45%
+        font-size: 1.4em
+        color: rgba(white, 0.6)
+
+        &:hover
+            color: white
+
     .controls
         position: absolute
         left: 0
-        width: 20%
-        height: $track-height + 30
-        padding: 30px 20px 0 0
+        width: 26%
+        height: $track-height + 50
+        padding: 10px 20px 0 0
         background: linear-gradient(to bottom, #888888 0%, #7c7d7d 47%, #555555 100%)
         float: left
         color: #fff
         z-index: 999
+        box-shadow: 3px 0 10px rgba(black, 0.3)
 
     label
         display: block
@@ -74,28 +132,115 @@ $track-height: 100px
             padding-right: 5%
             width: 35%
 
+            em
+                font-style: normal
 
         select, input
             width: 57%
 
+        input
+            height: 10px
+
+    select
+        font-family: 'Chivo', sans-serif
+        font-size: 1em
+        color: #fff
+
+        background: transparent url(downarrow.png) no-repeat right 6px
+        background-size: 16px 10px
+        padding: 2px 18px 2px 6px // 18px = prevents overflow of the text on arrow
+        border: 2px groove transparent
+
+        // make up for the border & padding
+        margin-top: -4px
+        margin-left: -8px
+
+        // remove all the default styling
+        // padding: 0
+        height: auto
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+
+        outline: 0
+
+        // &:hover
+            // border-width: 2px
+            // border-style: groove
+
+        &[name="datasets"]
+            width: 88%
+            font-size: 1.3em
+            margin: 0 0 10px 9%
+            background-position-y: 8px
+            padding-right: 23px // prevents overflow of the text
+
     .data-holder
-        margin-left: 20%
-        padding: 60px 20px 0 3%
+        margin-left: 26%
+        // padding: 60px 20px 0 3%
+        padding: 0 20px 0 3%
         height: $track-height
         position: absolute
 
+
+    $bar-width: 80px
+
+    .data-shifted-negative
+        display: none
+
     .data
+        height: $track-height + 60
+        border-collapse: collapse
         table-layout: fixed
+        margin-left: $bar-width*1.5
+
         tr
+            text-align: right
+            margin-left: $bar-width
 
         td
-            border-left: 1px solid rgba(0,0,0,.2)
-            min-width: 60px
-            max-width: 60px
+            border-right: 1px solid rgba(0,0,0,.2)
+            text-align: center
+            cursor: default
+
+            &.shifted-minus
+                display: none
+
+        th
+            position: absolute
+            left: 0
+            width: $bar-width
+            padding: 0 10px
+            font-weight: normal
+            color: #fff
+            // -webkit-backdrop-filter: blur(4px)
+
+            span
+                padding: 3px 5px
+                border-radius: 3px
+                cursor: default
+
+        td
+            min-width: $bar-width
+            max-width: $bar-width
+
+        th
+            min-width: $bar-width * 1.5
+            max-width: $bar-width * 1.5
 
     .currentBeat
-        background-color: #C3D6BE
+        background: #C3D6BE
         font-weight: bold
+
+        span
+            font-size: 1.7em
+            margin-top: -0.7em
+            display: inline-block
+
+    .currentRow span
+        font-weight: bold
+        color: transparent
+        background: #fff
 
 // Different colour for every track
 $i: 1
@@ -107,7 +252,22 @@ $track-colours: #16a085, #f39c12, #2980b9, #34495e, #27ae60, #8e44ad, #c0392b, #
         $lighter-colour: mix($track-colour, white, 3%)
         background: linear-gradient(to bottom, $lighter-colour 0%, darken($lighter-colour, 2%) 47%, darken($lighter-colour, 6%) 100%)
 
+        th
+            background: rgba(lighten($track-colour, 3%), 0.9)
+
+            &:hover span
+                color: mix($track-colour, white, 30%)
+
+            &.currentRow span
+                color: darken($track-colour, 4%)
+
         .controls
             background: linear-gradient(to bottom, $track-colour 0%, darken($track-colour, 5%) 47%, darken($track-colour, 15%) 100%)
+
+            label
+                color: mix($track-colour, white, 30%)
+
+            select:hover
+                border-color: $track-colour
 
     $i: $i + 1

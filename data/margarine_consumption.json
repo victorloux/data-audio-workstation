@@ -1,0 +1,46 @@
+[
+	{
+		"year": "2000",
+		"pounds_per_capita": "8.2"
+	},
+	{
+		"year": "2001",
+		"pounds_per_capita": "7"
+	},
+	{
+		"year": "2002",
+		"pounds_per_capita": "6.5"
+	},
+	{
+		"year": "2003",
+		"pounds_per_capita": "5.3"
+	},
+	{
+		"year": "2004",
+		"pounds_per_capita": "5.2"
+	},
+	{
+		"year": "2005",
+		"pounds_per_capita": "4"
+	},
+	{
+		"year": "2006",
+		"pounds_per_capita": "4.6"
+	},
+	{
+		"year": "2007",
+		"pounds_per_capita": "4.5"
+	},
+	{
+		"year": "2008",
+		"pounds_per_capita": "4.2"
+	},
+	{
+		"year": "2009",
+		"pounds_per_capita": "3.7"
+	},
+	{
+		"year": "2010",
+		"pounds_per_capita": "3.5"
+	}
+]

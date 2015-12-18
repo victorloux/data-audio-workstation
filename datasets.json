@@ -2,5 +2,29 @@
 	"Death": {
 		"pedestrian_deaths_us": "Pedestrian death rates in the US",
 		"deaths_by_hanging_us": "Suicides by hanging in the US"
+	},
+	"Food": {
+		"margarine_consumption": "Consumption of margarine in the US",
+		"worldwide_vegetable_production": "Worldwide vegetable production (in volume)"
+	},
+	"Education": {
+		"doctorates_awarded_in_us": "Doctorates awarded in the US",
+		"alevels_ict": "A-Levels in Information & Communication Technology",
+		"alevels_designtech": "A-Levels in Design and Technology"
+	},
+	"Population": {
+		"population_growth_uk": "Growth of population in the UK",
+		"unemployment_rate_uk": "Unemployment rate in the UK",
+		"national_debt_uk": "National Debt of the UK"
+	},
+	"Politics": {
+		"voting_intentions_eu_referendum": "Voting intentions for EU referendum",
+		"english_voters_for_scottish_independence": "English voters in favour of Scottish independence",
+		"voting_intentions_scottish_referendum": "Voting intentions for the Scottish referendum",
+		"voting_intentions_post_scottish_referendum": "Voting intentions if a Scottish referendum was held again"
+	},
+	"Misc": {
+		"nicholas_cage_appearances": "Number of times Nicholas Cage appeared in a movie",
+		"metronome": "Metronome tick"
 	}
 }

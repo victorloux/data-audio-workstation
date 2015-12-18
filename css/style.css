@@ -7,47 +7,92 @@ body {
   font-size: 14px; }
 
 header {
-  height: 5em;
+  height: 9em;
   background-color: #222222;
   color: white;
   position: fixed;
   width: 100%;
-  top: 0; }
-  header a:link, header a:visited {
+  top: 0;
+  z-index: 9999;
+  font-size: 1.2em;
+  padding-left: 0.8em; }
+  header a:link, header a:visited, header .block {
     display: block;
     float: left;
-    width: 1em;
-    border-right: 1px solid #f6f6f6;
-    padding: 0.4em 0.4em 0.1em;
+    height: 9em;
+    font-size: 1em;
     color: white;
-    font-size: 3em;
     text-decoration: none;
-    font-weight: bold; }
-  header .loaded-indicator {
-    padding: 1.8em 12em;
-    float: left; }
-    header .loaded-indicator.loaded {
-      color: #00cc00; }
-  header .options {
-    padding: 1.8em 20em; }
+    font-weight: bold;
+    text-align: center; }
+    header a:link span, header a:link select, header a:visited span, header a:visited select, header .block span, header .block select {
+      display: block;
+      padding: 0.7em 0.5em 0.2em; }
+      header a:link span.icon, header a:link select.icon, header a:visited span.icon, header a:visited select.icon, header .block span.icon, header .block select.icon {
+        font-size: 3em; }
+    header a:link strong, header a:visited strong, header .block strong {
+      font-size: 0.8em;
+      text-transform: uppercase;
+      height: 9em; }
+  header a:hover {
+    background-color: #515151; }
+  header .beats, header loaded-indicator, header #speed {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-top: 2em !important;
+    padding-bottom: 0.8em !important; }
+  header #playpause span {
+    font-size: 3.8em;
+    padding-top: 0.4em;
+    padding-bottom: 0.1em; }
+  header .loaded-indicator.loaded {
+    color: #00cc00; }
+  header .centre {
+    width: 21em;
+    margin: 0 auto; }
+  header .right {
+    width: 230px;
+    position: fixed;
+    right: 0; }
+    header .right .block {
+      margin-right: 2em; }
+    header .right span {
+      padding-top: 3em;
+      padding-bottom: 1em; }
+    header .right select {
+      margin-top: 2.2em;
+      margin-bottom: 0.6em; }
 
 .tracks {
-  margin-top: 5em; }
+  margin-top: 10.8em; }
 
 .track {
-  height: 160px;
+  height: 190px;
   background: linear-gradient(to bottom, white 0%, #f6f6f6 47%, #ededed 100%);
   clear: both; }
+  .track:hover .delete {
+    display: block; }
+  .track .delete {
+    display: none;
+    text-decoration: none;
+    position: absolute;
+    left: 13px;
+    top: 45%;
+    font-size: 1.4em;
+    color: rgba(255, 255, 255, 0.6); }
+    .track .delete:hover {
+      color: white; }
   .track .controls {
     position: absolute;
     left: 0;
-    width: 20%;
-    height: 130px;
-    padding: 30px 20px 0 0;
+    width: 26%;
+    height: 180px;
+    padding: 10px 20px 0 0;
     background: linear-gradient(to bottom, #888888 0%, #7c7d7d 47%, #555555 100%);
     float: left;
     color: white;
-    z-index: 999; }
+    z-index: 999;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3); }
   .track label {
     display: block;
     margin-bottom: 0.3em; }
@@ -56,67 +101,207 @@ header {
       text-align: right;
       padding-right: 5%;
       width: 35%; }
+      .track label span em {
+        font-style: normal; }
     .track label select, .track label input {
       width: 57%; }
+    .track label input {
+      height: 10px; }
+  .track select {
+    font-family: "Chivo", sans-serif;
+    font-size: 1em;
+    color: white;
+    background: transparent url(downarrow.png) no-repeat right 6px;
+    background-size: 16px 10px;
+    padding: 2px 18px 2px 6px;
+    border: 2px groove transparent;
+    margin-top: -4px;
+    margin-left: -8px;
+    height: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0; }
+    .track select[name="datasets"] {
+      width: 88%;
+      font-size: 1.3em;
+      margin: 0 0 10px 9%;
+      background-position-y: 8px;
+      padding-right: 23px; }
   .track .data-holder {
-    margin-left: 20%;
-    padding: 60px 20px 0 3%;
-    height: 100px;
+    margin-left: 26%;
+    padding: 0 20px 0 3%;
+    height: 130px;
     position: absolute; }
+  .track .data-shifted-negative {
+    display: none; }
   .track .data {
-    table-layout: fixed; }
+    height: 190px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-left: 120px; }
+    .track .data tr {
+      text-align: right;
+      margin-left: 80px; }
     .track .data td {
-      border-left: 1px solid rgba(0, 0, 0, 0.2);
-      min-width: 60px;
-      max-width: 60px; }
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      text-align: center;
+      cursor: default; }
+      .track .data td.shifted-minus {
+        display: none; }
+    .track .data th {
+      position: absolute;
+      left: 0;
+      width: 80px;
+      padding: 0 10px;
+      font-weight: normal;
+      color: white; }
+      .track .data th span {
+        padding: 3px 5px;
+        border-radius: 3px;
+        cursor: default; }
+    .track .data td {
+      min-width: 80px;
+      max-width: 80px; }
+    .track .data th {
+      min-width: 120px;
+      max-width: 120px; }
   .track .currentBeat {
-    background-color: #c3d6be;
+    background: #c3d6be;
     font-weight: bold; }
+    .track .currentBeat span {
+      font-size: 1.7em;
+      margin-top: -0.7em;
+      display: inline-block; }
+  .track .currentRow span {
+    font-weight: bold;
+    color: transparent;
+    background: white; }
 
 .track:nth-of-type(1) {
   border-top: #0a463a;
   background: linear-gradient(to bottom, #f8fcfb 0%, #f1f9f7 47%, #e3f3ef 100%); }
+  .track:nth-of-type(1) th {
+    background: rgba(24, 173, 144, 0.9); }
+    .track:nth-of-type(1) th:hover span {
+      color: #b9e2da; }
+    .track:nth-of-type(1) th.currentRow span {
+      color: #148e76; }
   .track:nth-of-type(1) .controls {
     background: linear-gradient(to bottom, #16a085 0%, #138a72 47%, #0d5d4d 100%); }
+    .track:nth-of-type(1) .controls label {
+      color: #b9e2da; }
+    .track:nth-of-type(1) .controls select:hover {
+      border-color: #16a085; }
 
 .track:nth-of-type(2) {
   border-top: #976008;
   background: linear-gradient(to bottom, #fefcf7 0%, #fdf9ee 47%, #fbf2dc 100%); }
+  .track:nth-of-type(2) th {
+    background: rgba(244, 162, 33, 0.9); }
+    .track:nth-of-type(2) th:hover span {
+      color: #fbe1b7; }
+    .track:nth-of-type(2) th.currentRow span {
+      color: #e5910c; }
   .track:nth-of-type(2) .controls {
     background: linear-gradient(to bottom, #f39c12 0%, #e08e0b 47%, #b06f09 100%); }
+    .track:nth-of-type(2) .controls label {
+      color: #fbe1b7; }
+    .track:nth-of-type(2) .controls select:hover {
+      border-color: #f39c12; }
 
 .track:nth-of-type(3) {
   border-top: #164666;
   background: linear-gradient(to bottom, #f8fbfc 0%, #f1f7f9 47%, #e3eff3 100%); }
+  .track:nth-of-type(3) th {
+    background: rgba(44, 137, 198, 0.9); }
+    .track:nth-of-type(3) th:hover span {
+      color: #bed8ea; }
+    .track:nth-of-type(3) th.currentRow span {
+      color: #2574a8; }
   .track:nth-of-type(3) .controls {
     background: linear-gradient(to bottom, #2980b9 0%, #2472a4 47%, #1b557a 100%); }
+    .track:nth-of-type(3) .controls label {
+      color: #bed8ea; }
+    .track:nth-of-type(3) .controls select:hover {
+      border-color: #2980b9; }
 
 .track:nth-of-type(4) {
   border-top: #10161c;
   background: linear-gradient(to bottom, #f8f9fa 0%, #f2f4f6 47%, #e6eaed 100%); }
+  .track:nth-of-type(4) th {
+    background: rgba(57, 81, 104, 0.9); }
+    .track:nth-of-type(4) th:hover span {
+      color: #c2c8ce; }
+    .track:nth-of-type(4) th.currentRow span {
+      color: #2d3f51; }
   .track:nth-of-type(4) .controls {
     background: linear-gradient(to bottom, #34495e 0%, #2b3c4e 47%, #19232d 100%); }
+    .track:nth-of-type(4) .controls label {
+      color: #c2c8ce; }
+    .track:nth-of-type(4) .controls select:hover {
+      border-color: #34495e; }
 
 .track:nth-of-type(5) {
   border-top: #145b32;
   background: linear-gradient(to bottom, #f8fcfa 0%, #f1f9f5 47%, #e3f3eb 100%); }
+  .track:nth-of-type(5) th {
+    background: rgba(42, 186, 103, 0.9); }
+    .track:nth-of-type(5) th:hover span {
+      color: #bee6cf; }
+    .track:nth-of-type(5) th.currentRow span {
+      color: #239d57; }
   .track:nth-of-type(5) .controls {
     background: linear-gradient(to bottom, #27ae60 0%, #229955 47%, #19703e 100%); }
+    .track:nth-of-type(5) .controls label {
+      color: #bee6cf; }
+    .track:nth-of-type(5) .controls select:hover {
+      border-color: #27ae60; }
 
 .track:nth-of-type(6) {
   border-top: #522764;
   background: linear-gradient(to bottom, #fbf9fc 0%, #f6f2f9 47%, #ede5f2 100%); }
+  .track:nth-of-type(6) th {
+    background: rgba(151, 73, 183, 0.9); }
+    .track:nth-of-type(6) th:hover span {
+      color: #ddc6e6; }
+    .track:nth-of-type(6) th.currentRow span {
+      color: #823e9e; }
   .track:nth-of-type(6) .controls {
     background: linear-gradient(to bottom, #8e44ad 0%, #7f3d9b 47%, #612e76 100%); }
+    .track:nth-of-type(6) .controls label {
+      color: #ddc6e6; }
+    .track:nth-of-type(6) .controls select:hover {
+      border-color: #8e44ad; }
 
 .track:nth-of-type(7) {
   border-top: #6d2018;
   background: linear-gradient(to bottom, #fdf9f8 0%, #fbf2f0 47%, #f6e5e0 100%); }
+  .track:nth-of-type(7) th {
+    background: rgba(205, 61, 46, 0.9); }
+    .track:nth-of-type(7) th:hover span {
+      color: #ecc3bf; }
+    .track:nth-of-type(7) th.currentRow span {
+      color: #af3427; }
   .track:nth-of-type(7) .controls {
     background: linear-gradient(to bottom, #c0392b 0%, #ab3326 47%, #81261d 100%); }
+    .track:nth-of-type(7) .controls label {
+      color: #ecc3bf; }
+    .track:nth-of-type(7) .controls select:hover {
+      border-color: #c0392b; }
 
 .track:nth-of-type(8) {
   border-top: #869198;
   background: linear-gradient(to bottom, #fdfdfd 0%, #f8f8f8 47%, #eeeeee 100%); }
+  .track:nth-of-type(8) th {
+    background: rgba(197, 203, 206, 0.9); }
+    .track:nth-of-type(8) th:hover span {
+      color: #ebedee; }
+    .track:nth-of-type(8) th.currentRow span {
+      color: #b2b9be; }
   .track:nth-of-type(8) .controls {
     background: linear-gradient(to bottom, #bdc3c7 0%, #afb6bb 47%, #949da4 100%); }
+    .track:nth-of-type(8) .controls label {
+      color: #ebedee; }
+    .track:nth-of-type(8) .controls select:hover {
+      border-color: #bdc3c7; }

@@ -1,0 +1,534 @@
+[
+  {
+    "date": "2010/09",
+    "remain": "33%",
+    "leave": "47%",
+    "wouldnt_vote": "5%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2011/08",
+    "remain": "30%",
+    "leave": "52%",
+    "wouldnt_vote": "4%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2011/10",
+    "remain": "32%",
+    "leave": "51%",
+    "wouldnt_vote": "4%",
+    "dont_know": "13%"
+  },
+  {
+    "date": "2011/12",
+    "remain": "35%",
+    "leave": "44%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2011/12",
+    "remain": "36%",
+    "leave": "43%",
+    "wouldnt_vote": "4%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2011/12",
+    "remain": "41%",
+    "leave": "41%",
+    "wouldnt_vote": "5%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2012/01",
+    "remain": "34%",
+    "leave": "44%",
+    "wouldnt_vote": "5%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2012/02",
+    "remain": "30%",
+    "leave": "48%",
+    "wouldnt_vote": "6%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2012/03",
+    "remain": "34%",
+    "leave": "44%",
+    "wouldnt_vote": "5%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2012/04",
+    "remain": "32%",
+    "leave": "48%",
+    "wouldnt_vote": "6%",
+    "dont_know": "13%"
+  },
+  {
+    "date": "2012/05",
+    "remain": "28%",
+    "leave": "51%",
+    "wouldnt_vote": "6%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2012/06",
+    "remain": "33%",
+    "leave": "47%",
+    "wouldnt_vote": "6%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2012/07",
+    "remain": "31%",
+    "leave": "48%",
+    "wouldnt_vote": "4%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2012/07",
+    "remain": "30%",
+    "leave": "49%",
+    "wouldnt_vote": "7%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2012/08",
+    "remain": "32%",
+    "leave": "47%",
+    "wouldnt_vote": "7%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2012/09",
+    "remain": "33%",
+    "leave": "47%",
+    "wouldnt_vote": "7%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2012/10",
+    "remain": "28%",
+    "leave": "49%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2012/11",
+    "remain": "30%",
+    "leave": "51%",
+    "wouldnt_vote": "5%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "31%",
+    "leave": "46%",
+    "wouldnt_vote": "6%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "36%",
+    "leave": "42%",
+    "wouldnt_vote": "4%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "40%",
+    "leave": "34%",
+    "wouldnt_vote": "5%",
+    "dont_know": "20%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "37%",
+    "leave": "40%",
+    "wouldnt_vote": "6%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "38%",
+    "leave": "40%",
+    "wouldnt_vote": "4%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2013/01",
+    "remain": "37%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "19%"
+  },
+  {
+    "date": "2013/02",
+    "remain": "38%",
+    "leave": "41%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2013/03",
+    "remain": "33%",
+    "leave": "44%",
+    "wouldnt_vote": "5%",
+    "dont_know": "19%"
+  },
+  {
+    "date": "2013/04",
+    "remain": "36%",
+    "leave": "43%",
+    "wouldnt_vote": "7%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2013/04",
+    "remain": "35%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/05",
+    "remain": "7%",
+    "leave": "35%",
+    "wouldnt_vote": "46%",
+    "dont_know": "4%"
+  },
+  {
+    "date": "2013/05",
+    "remain": "30%",
+    "leave": "47%",
+    "wouldnt_vote": "4%",
+    "dont_know": "19%"
+  },
+  {
+    "date": "2013/05",
+    "remain": "34%",
+    "leave": "44%",
+    "wouldnt_vote": "4%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/05",
+    "remain": "35%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/06",
+    "remain": "35%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/06",
+    "remain": "31%",
+    "leave": "45%",
+    "wouldnt_vote": "6%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2013/07",
+    "remain": "36%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2013/07",
+    "remain": "35%",
+    "leave": "45%",
+    "wouldnt_vote": "6%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2013/08",
+    "remain": "35%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/08",
+    "remain": "34%",
+    "leave": "46%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2013/09",
+    "remain": "39%",
+    "leave": "42%",
+    "wouldnt_vote": "4%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2013/10",
+    "remain": "37%",
+    "leave": "42%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2013/11",
+    "remain": "39%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2013/12",
+    "remain": "37%",
+    "leave": "43%",
+    "wouldnt_vote": "4%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/01",
+    "remain": "33%",
+    "leave": "43%",
+    "wouldnt_vote": "5%",
+    "dont_know": "19%"
+  },
+  {
+    "date": "2014/02",
+    "remain": "36%",
+    "leave": "39%",
+    "wouldnt_vote": "7%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2014/03",
+    "remain": "41%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2014/03",
+    "remain": "42%",
+    "leave": "36%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2014/03",
+    "remain": "42%",
+    "leave": "36%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/04",
+    "remain": "42%",
+    "leave": "37%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/04",
+    "remain": "40%",
+    "leave": "38%",
+    "wouldnt_vote": "6%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2014/04",
+    "remain": "40%",
+    "leave": "37%",
+    "wouldnt_vote": "5%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2014/05",
+    "remain": "43%",
+    "leave": "37%",
+    "wouldnt_vote": "4%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/05",
+    "remain": "42%",
+    "leave": "37%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/05",
+    "remain": "41%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2014/06",
+    "remain": "44%",
+    "leave": "36%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2014/06",
+    "remain": "39%",
+    "leave": "39%",
+    "wouldnt_vote": "6%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2014/06",
+    "remain": "39%",
+    "leave": "37%",
+    "wouldnt_vote": "6%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2014/06",
+    "remain": "40%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/07",
+    "remain": "41%",
+    "leave": "38%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/07",
+    "remain": "38%",
+    "leave": "39%",
+    "wouldnt_vote": "6%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2014/08",
+    "remain": "40%",
+    "leave": "38%",
+    "wouldnt_vote": "5%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2014/08",
+    "remain": "41%",
+    "leave": "40%",
+    "wouldnt_vote": "5%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2014/09",
+    "remain": "42%",
+    "leave": "38%",
+    "wouldnt_vote": "5%",
+    "dont_know": "14%"
+  },
+  {
+    "date": "2014/10",
+    "remain": "40%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/10",
+    "remain": "41%",
+    "leave": "40%",
+    "wouldnt_vote": "4%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2014/10",
+    "remain": "35%",
+    "leave": "44%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/10",
+    "remain": "37%",
+    "leave": "43%",
+    "wouldnt_vote": "4%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/11",
+    "remain": "38%",
+    "leave": "41%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/11",
+    "remain": "39%",
+    "leave": "39%",
+    "wouldnt_vote": "4%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2014/11",
+    "remain": "40%",
+    "leave": "41%",
+    "wouldnt_vote": "3%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2014/12",
+    "remain": "40%",
+    "leave": "39%",
+    "wouldnt_vote": "5%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2015/01",
+    "remain": "43%",
+    "leave": "37%",
+    "wouldnt_vote": "5%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2015/02",
+    "remain": "45%",
+    "leave": "35%",
+    "wouldnt_vote": "3%",
+    "dont_know": "17%"
+  },
+  {
+    "date": "2015/03",
+    "remain": "46%",
+    "leave": "36%",
+    "wouldnt_vote": "3%",
+    "dont_know": "15%"
+  },
+  {
+    "date": "2015/04",
+    "remain": "45%",
+    "leave": "35%",
+    "wouldnt_vote": "4%",
+    "dont_know": "16%"
+  },
+  {
+    "date": "2015/05",
+    "remain": "45%",
+    "leave": "33%",
+    "wouldnt_vote": "3%",
+    "dont_know": "18%"
+  },
+  {
+    "date": "2015/05",
+    "remain": "45%",
+    "leave": "36%",
+    "wouldnt_vote": "3%",
+    "dont_know": "16%"
+  }
+]

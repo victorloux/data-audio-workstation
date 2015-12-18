@@ -2,6 +2,7 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>DATA AUDIO WORKSTATION</title>
 
 	<!-- DOM + manipulation libraries -->
 	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
@@ -32,20 +33,47 @@
 
 <body>
 	<header>
-		<a href="#" id="playpause"><span class="icon icon-play3"></span></a>
-		<a href="#" id="rewind"><span class="icon icon-first"></span></a>
-		<a href="#" class="add-track"><span class="icon icon-plus"></span></a>
+		<a href="#" class="add-track">
+			<span class="icon icon-plus"></span>
+			<strong>New track</strong>
+		</a>
 
-		<div class="loaded-indicator"></div>
-		<div class="options">
-			<select name="speed" id="speed">
-				<option value="0.13">1/8</option>
-				<option value="0.25" selected>1/4</option>
-				<option value="0.5">1/2</option>
-				<option value="1">1</option>
-				<option value="1.5">1 1/2</option>
-				<option value="2">2</option>
-			</select>
+		<div class="centre">
+			<a href="#" id="rewind">
+				<span class="icon icon-previous"></span>
+				<strong>Rewind</strong>
+			</a>
+
+			<a href="#" id="playpause">
+				<span class="icon icon-play2"></span>
+				<strong>Play/pause</strong>
+			</a>
+
+			<div class="block">
+				<span class="beats">0 / 0</span>
+				<strong>Beats</strong>
+			</div>
+		</div>
+
+		<div class="right">
+			<div class="block">
+				<span class="loaded-indicator"></span>
+				<strong>Loading</strong>
+			</div>
+
+			<div class="block">
+				<select name="speed" id="speed">
+					<option value="0.25">240</option>
+					<option value="0.428">140</option>
+					<option value="0.5">120</option>
+					<option value="0.6" selected>100</option>
+					<option value="0.75">80</option>
+					<option value="1">60</option>
+					<option value="1.3333">45</option>
+				</select>
+
+				<strong>BPM</strong>
+			</div>
 		</div>
 	</header>
 

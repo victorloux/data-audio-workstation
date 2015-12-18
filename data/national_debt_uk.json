@@ -1,0 +1,62 @@
+[
+	{
+		"year": "00/01",
+		"million_gbp": "382991"
+	},
+	{
+		"year": "01/02",
+		"million_gbp": "381117"
+	},
+	{
+		"year": "02/03",
+		"million_gbp": "400539"
+	},
+	{
+		"year": "03/04",
+		"million_gbp": "448359"
+	},
+	{
+		"year": "04/05",
+		"million_gbp": "502990"
+	},
+	{
+		"year": "05/06",
+		"million_gbp": "553807"
+	},
+	{
+		"year": "06/07",
+		"million_gbp": "596516"
+	},
+	{
+		"year": "07/08",
+		"million_gbp": "640707"
+	},
+	{
+		"year": "08/09",
+		"million_gbp": "823529"
+	},
+	{
+		"year": "09/10",
+		"million_gbp": "1074005"
+	},
+	{
+		"year": "10/11",
+		"million_gbp": "1212630"
+	},
+	{
+		"year": "11/12",
+		"million_gbp": "1345699"
+	},
+	{
+		"year": "12/13",
+		"million_gbp": "1421092"
+	},
+	{
+		"year": "13/14",
+		"million_gbp": "1521619"
+	},
+	{
+		"year": "14/15",
+		"million_gbp": "1600898"
+	}
+]

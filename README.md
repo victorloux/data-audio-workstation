@@ -32,7 +32,17 @@ sass css/style.sass css/style.css
 
 ## Source of datasets
 
-Death rates in US: http://wonder.cdc.gov
+* Death rates in US: http://wonder.cdc.gov
+* Magarine consumption in US: Department of Agriculture; Economic Research Service
+* Worldwide vegetable production: FAO
+* Doctorates awarded in the US: http://www.nsf.gov/statistics/infbrief/nsf11305/
+* Unemployment rates in UK: IMF
+* Population growth in UK: World Bank
+* National debt of the UK: Office for National Statistics
+* English voters for Scottish Independence: NatCen, 2013
+* Evolution of vote on Scottish independence: WhatScotlandThinks.org
+* A-level results: http://www.bstubbs.co.uk/a-lev.htm
+
 
 ## License
 

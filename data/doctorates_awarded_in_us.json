@@ -1,0 +1,90 @@
+[
+    {
+        "year": "1999",
+        "sci_eng": "25931",
+        "comp_science": "856",
+        "history": "960",
+        "soc_sciences": "4063",
+        "communication": "418"
+    },
+    {
+        "year": "2000",
+        "sci_eng": "25966",
+        "comp_science": "861",
+        "history": "1019",
+        "soc_sciences": "4155",
+        "communication": "434"
+    },
+    {
+        "year": "2001",
+        "sci_eng": "25529",
+        "comp_science": "830",
+        "history": "991",
+        "soc_sciences": "4081",
+        "communication": "431"
+    },
+    {
+        "year": "2002",
+        "sci_eng": "24608",
+        "comp_science": "809",
+        "history": "983",
+        "soc_sciences": "4013",
+        "communication": "429"
+    },
+    {
+        "year": "2003",
+        "sci_eng": "25283",
+        "comp_science": "867",
+        "history": "895",
+        "soc_sciences": "4139",
+        "communication": "457"
+    },
+    {
+        "year": "2004",
+        "sci_eng": "26275",
+        "comp_science": "948",
+        "history": "927",
+        "soc_sciences": "4139",
+        "communication": "473"
+    },
+    {
+        "year": "2005",
+        "sci_eng": "27985",
+        "comp_science": "1129",
+        "history": "881",
+        "soc_sciences": "4141",
+        "communication": "517"
+    },
+    {
+        "year": "2006",
+        "sci_eng": "29866",
+        "comp_science": "1453",
+        "history": "917",
+        "soc_sciences": "4277",
+        "communication": "540"
+    },
+    {
+        "year": "2007",
+        "sci_eng": "31806",
+        "comp_science": "1656",
+        "history": "888",
+        "soc_sciences": "4422",
+        "communication": "592"
+    },
+    {
+        "year": "2008",
+        "sci_eng": "32832",
+        "comp_science": "1787",
+        "history": "923",
+        "soc_sciences": "4599",
+        "communication": "588"
+    },
+    {
+        "year": "2009",
+        "sci_eng": "33470",
+        "comp_science": "1611",
+        "history": "989",
+        "soc_sciences": "4842",
+        "communication": "651"
+    }
+]
